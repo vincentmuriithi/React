@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './App.css';
 import {connect, Provider} from "react-redux";
 import {createStore} from "redux"
@@ -23,6 +23,13 @@ props.increment(1)
 const handleReduction = () =>{
 props.increment(-1)
 }
+
+const keypressHandler = event => keysHandler(event, props);
+useEffect(() => {
+document.addEventListener("keydown", keypressHandler);
+return () => document.removeEventListener("keydown", keypressHandler);
+},[]
+)
   return (
     <div className="App">
      <p>{props.count}</p>
@@ -33,6 +40,29 @@ props.increment(-1)
      onClick={handleReduction}>Reduce</button>
     </div>
   );
+}
+
+//handling the up and bottom keys event 
+const keysHandler = (event, additionalData) => {
+switch (event.key){
+case "ArrowUp":
+        additionalData.increment(1);
+        break;
+case "ArrowRight":
+        additionalData.increment(1);
+        break;
+case "ArrowLeft":
+        additionalData.increment(-1);
+        break;
+case "ArrowDown":
+        additionalData.increment(-1);
+        break;
+
+   
+
+
+}
+
 }
 
 //creating the reducer function which handles the action
