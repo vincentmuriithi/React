@@ -20,11 +20,17 @@ function App(props) {
 const handleChange = () =>{
 props.increment(1)
 }
+const handleReduction = () =>{
+props.increment(-1)
+}
   return (
     <div className="App">
      <p>{props.count}</p>
      <button style={{padding: "10px", backgroundColor: "#fade70", borderRadius: "14px", fontFamily: "Aerial", width: "90px", textAlign: "center"}}
      onClick={handleChange}>Add</button>
+     <br/>
+     <button style={{marginTop: "10px", padding: "10px", backgroundColor: "#fade70", borderRadius: "14px", fontFamily: "Aerial", width: "90px", textAlign: "center"}}
+     onClick={handleReduction}>Reduce</button>
     </div>
   );
 }
